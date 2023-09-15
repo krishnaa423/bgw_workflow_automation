@@ -1,0 +1,18 @@
+&input_pw2bgw
+   outdir = './tmp/'
+   prefix = 'SiO2'
+   real_or_complex = 2
+   wfng_flag = .true.
+   wfng_file = 'WFN'
+   wfng_kgrid = .true.
+   wfng_nk1 = 0
+   wfng_nk2 = 0
+   wfng_nk3 = 0
+   wfng_dk1 = 0.0
+   wfng_dk2 = 0.0
+   wfng_dk3 = 0.0
+   vscg_flag = .true.
+   vscg_file = 'VSC'
+   vkbg_flag = .true.
+   vkbg_file = 'VKB'
+/

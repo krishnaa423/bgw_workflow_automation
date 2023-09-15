@@ -1,0 +1,12 @@
+
+number_bands 1000
+
+band_index_min 38
+band_index_max 70
+
+screening_semiconductor
+
+use_wfn_hdf5
+
+begin kpoints
+end

@@ -1,0 +1,7 @@
+
+epsilon_cutoff 20.0
+number_bands 1000
+use_wfn_hdf5
+
+begin qpoints
+end

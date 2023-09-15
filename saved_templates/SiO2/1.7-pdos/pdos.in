@@ -1,0 +1,7 @@
+&PROJWFC
+  outdir= './tmp/',
+  prefix= 'SiO2',
+  Emin = -5.0,
+  Emax = 15.0,
+  filpdos= 'SiO2_pdos.dat'
+/

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python create_workflow.py &> create_workflow.log

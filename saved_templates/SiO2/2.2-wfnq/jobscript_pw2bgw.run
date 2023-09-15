@@ -1,0 +1,22 @@
+#!/bin/bash -l
+#SBATCH --account=PHY20032
+#SBATCH --partition=development
+#SBATCH --job-name=SiO2
+#SBATCH --nodes=1
+#SBATCH --ntasks=56
+#SBATCH --time=01:30:00
+#SBATCH --mail-user=krishnaa.vadivel@yale.edu
+#SBATCH --mail-type=ALL
+
+./link_script.sh
+module load impi
+ibrun pw2bgw.x < pw2bgw.in > pw2bgw.out
+cp ./tmp/RHO ./RHO
+cp ./tmp/WFN ./WFN
+cp ./tmp/vxc.dat ./vxc.dat
+cp ./tmp/VXC ./VXC
+cp ./tmp/VSC ./VSC
+cp ./tmp/VKB ./VKB
+
+# If no parabands. Comment out if using parabands to extend bands. 
+wfn2hdf.x BIN WFN WFNq.h5

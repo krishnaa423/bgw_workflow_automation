@@ -1,0 +1,37 @@
+--
+&inputepw
+  prefix      = 'SiO2'
+  outdir      = './tmp'
+
+  elph        = .true.
+  epbwrite    = .true.    ! Writes the coarse matrix elements in the Bloch representation. 
+  epbread     = .false.		! Default is false. 
+
+  prtgkk      = .true.
+
+  nbndsub     =  70        ! Default is zero. 
+
+  wannierize  = .true.
+  num_iter    = 300
+  iprint      = 2
+  proj(1)     = 'random'
+
+  iverbosity  = 1
+
+  dvscf_dir   = '../1.2-ph/save'
+  
+  nk1         = 2
+  nk2         = 2
+  nk3         = 2
+
+  nq1         = 2
+  nq2         = 2
+  nq3         = 2
+
+  nqf1         = 2
+  nqf2         = 2
+  nqf3         = 2
+  nkf1         = 2
+  nkf2         = 2
+  nkf3         = 2
+ /

@@ -1,0 +1,6 @@
+&INPUT
+  flfrc = 'SiO2.fc'
+  flfrq = 'SiO2.freq'
+  fleig = 'SiO2.eig'
+  flvec = 'SiO2.modes'
+/

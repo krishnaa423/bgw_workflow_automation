@@ -1,0 +1,10 @@
+
+number_val_bands_coarse 10
+number_val_bands_fine 10
+number_cond_bands_coarse 22
+number_cond_bands_fine 6 22
+
+use_wfn_hdf5
+
+use_symmetries_coarse_grid
+no_symmetries_fine_grid

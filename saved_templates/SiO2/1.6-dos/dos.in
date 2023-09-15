@@ -1,0 +1,7 @@
+&DOS
+  outdir='./tmp/',
+  prefix='SiO2',
+  fildos='SiO2_dos.dat',
+  emin=-5.0,
+  emax=15.0
+/

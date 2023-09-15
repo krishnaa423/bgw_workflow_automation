@@ -1,0 +1,114 @@
+Starting : ./jobscript_pwscf.run
+Done with: ./jobscript_pwscf.run. Took 7.176056385040283 seconds.
+
+
+Starting : ./jobscript_kgrid.run
+Identity has a fractional translation     0.500000    0.000000    0.000000
+WARNING: Disabling fractional translations. System appears to be a supercell.
+Identity has a fractional translation     0.500000    0.000000    0.000000
+WARNING: Disabling fractional translations. System appears to be a supercell.
+Done with: ./jobscript_kgrid.run. Took 0.34597158432006836 seconds.
+
+
+Starting : ./jobscript_pwbands.run
+Done with: ./jobscript_pwbands.run. Took 3.901045083999634 seconds.
+
+
+Starting : ./jobscript_ph.run
+rm: cannot remove './save': No such file or directory
+Done with: ./jobscript_ph.run. Took 489.7130002975464 seconds.
+
+
+Starting : ./jobscript_epw.run
+Done with: ./jobscript_epw.run. Took 228.05819058418274 seconds.
+
+
+Starting : ./jobscript_kgrid.run
+Identity has a fractional translation     0.500000    0.000000    0.000000
+WARNING: Disabling fractional translations. System appears to be a supercell.
+Identity has a fractional translation     0.500000    0.000000    0.000000
+WARNING: Disabling fractional translations. System appears to be a supercell.
+Done with: ./jobscript_kgrid.run. Took 0.35637450218200684 seconds.
+
+
+Starting : ./jobscript_pwbands.run
+Done with: ./jobscript_pwbands.run. Took 5.500123977661133 seconds.
+
+
+Starting : ./jobscript_pw2bgw.run
+Done with: ./jobscript_pw2bgw.run. Took 1.33400297164917 seconds.
+
+
+Starting : ./jobscript_parabands.run
+ Reading/writing header and G vectors from WFN.h5 to WFN
+ Reading/writing wavefunctions G vectors from WFN.h5 to WFN
+ Reading/writing wavefunctions from WFN.h5 to WFN
+
+ Started conversion of wavefunctions with 8 k-points(s) at 10:46:04.
+ [ 10:46:04 |   0% ] k-points 1 / 8.
+ [ 10:46:05 |  13% ] k-points 2 / 8.
+ [ 10:46:06 |  25% ] k-points 3 / 8, remaining: 8 s.
+ [ 10:46:08 |  38% ] k-points 4 / 8, remaining: 6 s.
+ [ 10:46:09 |  50% ] k-points 5 / 8, remaining: 5 s.
+ [ 10:46:11 |  63% ] k-points 6 / 8, remaining: 4 s.
+ [ 10:46:12 |  75% ] k-points 7 / 8, remaining: 3 s.
+ [ 10:46:13 |  88% ] k-points 8 / 8, remaining: 1 s.
+ Finished conversion of wavefunctions at 10:46:15.
+ Elapsed time: 11 s.
+
+ Conversion from HDF5 to binary file complete!
+Outer array length: 3
+Done with: ./jobscript_parabands.run. Took 16.851794242858887 seconds.
+
+
+Starting : ./jobscript_kgrid.run
+Identity has a fractional translation     0.500000    0.000000    0.000000
+WARNING: Disabling fractional translations. System appears to be a supercell.
+Identity has a fractional translation     0.500000    0.000000    0.000000
+WARNING: Disabling fractional translations. System appears to be a supercell.
+Done with: ./jobscript_kgrid.run. Took 0.3199336528778076 seconds.
+
+
+Starting : ./jobscript_pwbands.run
+Done with: ./jobscript_pwbands.run. Took 7.689894437789917 seconds.
+
+
+Starting : ./jobscript_pw2bgw.run
+ Reading header and gvectors from WFN
+ Writing header and gvectors to WFNq.h5
+ Reading/writing wavefunctions from WFN to WFNq.h5
+
+ Started conversion of wavefunctions with 8 k-points(s) at 10:46:24.
+ [ 10:46:24 |   0% ] k-points 1 / 8.
+ [ 10:46:25 |  13% ] k-points 2 / 8.
+ [ 10:46:25 |  25% ] k-points 3 / 8, remaining: 4 s.
+ [ 10:46:26 |  38% ] k-points 4 / 8, remaining: 4 s.
+ [ 10:46:27 |  50% ] k-points 5 / 8, remaining: 3 s.
+ [ 10:46:28 |  63% ] k-points 6 / 8, remaining: 2 s.
+ [ 10:46:28 |  75% ] k-points 7 / 8, remaining: 1 s.
+ [ 10:46:29 |  88% ] k-points 8 / 8, remaining: 1 s.
+ Finished conversion of wavefunctions at 10:46:30.
+ Elapsed time: 6 s.
+
+ Conversion from binary to HDF5 file complete!
+Done with: ./jobscript_pw2bgw.run. Took 6.794772148132324 seconds.
+
+
+Starting : ./jobscript_epsilon.run
+Done with: ./jobscript_epsilon.run. Took 17.904396295547485 seconds.
+
+
+Starting : ./jobscript_sigma.run
+Done with: ./jobscript_sigma.run. Took 190.64235281944275 seconds.
+
+
+Starting : ./jobscript_kernel.run
+Done with: ./jobscript_kernel.run. Took 7.935319185256958 seconds.
+
+
+Starting : ./jobscript_absorption.run
+Done with: ./jobscript_absorption.run. Took 4.926992893218994 seconds.
+
+
+Starting : ./jobscript_esf.run
+./jobscript_esf.run: line 4: 146948 Aborted                 python esf.py &> esf.log

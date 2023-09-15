@@ -1,0 +1,7 @@
+
+input_wfn_file WFN
+output_wfn_file WFN_generated
+vkb_file VKB
+vsc_file VSC
+
+number_bands 100

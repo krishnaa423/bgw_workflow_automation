@@ -1,0 +1,16 @@
+#!/bin/bash -l
+#SBATCH --account=PHY20032
+#SBATCH --partition=development
+#SBATCH --job-name=SiO2
+#SBATCH --nodes=20
+#SBATCH --ntasks=1120
+#SBATCH --time=01:30:00
+#SBATCH --mail-user=krishnaa.vadivel@yale.edu
+#SBATCH --mail-type=ALL
+
+
+./link_script.sh
+ibrun plotxct.cplx.x &> plotxct.out
+volume.py ../1.1-scf/pwscf.in espresso *.a3Dr a3dr xct_1.xsf xsf false abs2 true
+rm *a3Dr
+rm slurm*

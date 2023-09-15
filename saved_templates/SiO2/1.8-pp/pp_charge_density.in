@@ -1,0 +1,12 @@
+&INPUTPP
+  prefix= 'SiO2',
+  outdir= './tmp/',
+!  filplot='SiO2_charge_density.dat',
+  plotnum=0  
+/
+
+&PLOT
+  iflag=3,  ! 3D plot.
+  output_format=5, ! 3s .xsf
+  filout='SiO2_charge_density.xsf'
+/

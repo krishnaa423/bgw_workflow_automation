@@ -1,0 +1,38 @@
+Starting : python remove_workflow.py
+Done with: python remove_workflow.py. Took 2.317169189453125 seconds.
+
+
+Starting : python create_workflow.py
+cp: cannot stat '../utilities/2.2-wfnq/*': No such file or directory
+cp: cannot stat '../utilities/3.1-wfn_fi/*': No such file or directory
+cp: cannot stat '../utilities/3.2-wfnq_fi/*': No such file or directory
+Done with: python create_workflow.py. Took 5.492911338806152 seconds.
+
+
+Starting : python run_workflow.py > run_workflow.log
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+rm: cannot remove './save': No such file or directory
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Done with: python run_workflow.py > run_workflow.log. Took 287.4784371852875 seconds.
+
+
+Starting : python remove_workflow.py
+Done with: python remove_workflow.py. Took 2.277374744415283 seconds.
+
+
+Starting : python create_workflow.py
+cp: cannot stat '../utilities/2.2-wfnq/*': No such file or directory
+cp: cannot stat '../utilities/3.1-wfn_fi/*': No such file or directory
+cp: cannot stat '../utilities/3.2-wfnq_fi/*': No such file or directory
+Done with: python create_workflow.py. Took 5.263278007507324 seconds.
+
+
+Starting : python run_workflow.py > run_workflow.log
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+rm: cannot remove './save': No such file or directory
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Done with: python run_workflow.py > run_workflow.log. Took 288.59807872772217 seconds.
+
+
+Total time elapsed for the workflow run is: 592.8318870067596 seconds.

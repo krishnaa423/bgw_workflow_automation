@@ -1,0 +1,174 @@
+Silicon - BerkeleyGW
+====================
+
+In this directory, we will perform perform calculations to assess the convergence of GW calculations 
+with respect to screened/dielectric cutoff and bands.
+
+We will pretend for this example that an "infinite" number of bands used in the dielectric matrix and 
+the CH summation in the self energy for Si is roughly 200, while the "infinite" G-vector cutoff is 20 Ryd. 
+The actual numbers are larger, but for time considerations, we will use these numbers.
+
+The total error we will aim for in these calculation is 200 meV. So, by the rule of thumb that the
+error from the truncated bands and screened cutoff is about half the total error, we want the error
+from these sources to be roughly 100 meV. At the end of this exercise we will have picked numbers of
+bands in Epsilon and Sigma and a screened cutoff such that the error in the calculation from these
+sources is 100 meV relative to the "infinite" limit.
+ 
+Instructions
+------------
+
+  1. First, run the script ``./01-link_files.sh``. It will create links for the
+     epsmat.h5 (dielectric matrix) files.
+ 
+  2. We first test the convergence with respect to the number of bands used in the 
+     CH summation. To do this, we must calculate the dielectric matrix in the limit
+     of an infinite number of bands and G-vectors. The total number of bands we should use
+     for Epsilon is 202 and the dielectric cutoff is 20 Ryd. These have already been set in the 
+     ``epsilon.inp`` file, so do the following:
+       a. Go to the ``1-epsilon`` directory and check the input file to make sure 
+          that the number of bands and the dielectric cutoff has been set correctly. 
+       b. Run the epsilon calculation using ``./01-run_epsilon.run``.
+       c. Make sure that the calculation has run successfully.
+
+  3. Now we must vary the number of bands used in the CH summation. The number of bands
+     that we will use is 60, 132, and 202. These have been determined to be symmetry
+     allowed by the degeneracy_check.x utility. 202 bands will be considered our "infinite"
+     limit. To do this do the following:
+       a. Go to the ``2-sigma`` directory and change the number of bands to 60. 
+       b. Run the Sigma calculation using ``./01-run_sigma.run``. 
+       c. Copy the ``sigma_hp.log`` file to ``convergence/CH_bands/sigma.60``, i.e. use
+          the command ``cp sigma_hp.log convergence/CH_bands/sigma.60``. The number 
+          after the dot signifies the number of bands used in the CH summation. 
+       d. Change the number of bands to 132. 
+       e. Run the Sigma calculation using ``./01-run_sigma.run``. 
+       f. Copy the ``sigma_hp.log`` file to ``convergence/CH_bands/sigma.132``.
+       g. Change the number of bands to 202. 
+       h. Run the Sigma calculation using ``./01-run_sigma.run``. 
+       i. Copy the ``sigma_hp.log`` file to ``convergence/CH_bands/sigma.202``.
+       j. Go the ``convergence/CH_bands`` directory by running 
+          ``cd convergence/CH_bands``.
+       k. Run the command ``module load python``, then run command 
+          ``python sigma_convergence.py``. This will generate a plot
+          showing the errors in many different QP gaps for the three
+          different numbers of bands used in the CH summation. Some of
+          the more well-studied gaps, e.g. Gamma-Gamma, Gamma-X, are labeled
+          specifically and are listed in the legend. All other lines, which
+          are yellow and are not in the legend, correspond to other gaps 
+          that are less well studied but which nonetheless tell you
+          about the non-uniform convergence of gaps, i.e. different gaps converge
+          at different rates. If you do not see the plot, a png named "CH_bands_conv.png" is 
+          generated, so you can use ``display CH_bands_conv.png`` to view that file. If that
+          does not work either, , then use the following command to copy the file to 
+          your laptop and view it there: 
+          ``scp username@edison.nersc.gov:/scratch1/scratchdirs/username/2-silicon_convergence/2-bgw/2-sigma/convergence/CH_bands/CH_bands_conv.png`` 
+          where username should be replaced with the user name for your training account.
+          The horizontal line at 20 meV is meant as a guide to the eye. What is the 
+          maximum error for the calculation using 132 bands?
+
+    4. Now we will test the convergence with respect to the screened cutoff of the
+       dielectric matrix. We have generated a dielectric matrix with a 20 Ryd cutoff,
+       but we can choose to use a sub-matrix corresponding to a lower cutoff by changing
+       the ``screened_coulomb_cutoff`` parameter in ``sigma.inp``. To test the convergence with respect 
+       to the screened cutoff do the following: 
+         a. Go to the ``2-sigma`` directory and change the ``screened_coulomb_cutoff`` to 10.0 Ryd. Check
+            that the number of bands in the Sigma and Epsilon calculations are set to their 
+            "infinite values". 
+         b. Run the Sigma calculation using ``./01-run_sigma.run``. 
+         c. Copy the ``sigma_hp.log`` file to ``convergence/Screened_cut/sigma.10``, i.e. use
+            the command ``cp sigma_hp.log convergence/Screened_cut/sigma.10``. The number 
+            after the dot now signifies the screened cutoff. 
+         d. Change the ``screened_coulomb_cutoff`` to 15.0. 
+         e. Run the Sigma calculation using ``./01-run_sigma.run``. 
+         f. Copy the ``sigma_hp.log`` file to ``convergence/Screened_cut/sigma.15``.
+         g. Change the ``screened_coulomb_cutoff`` to 20.0. 
+         h. Run the Sigma calculation using ``./01-run_sigma.run``. 
+         i. Copy the ``sigma_hp.log`` file to ``convergence/Screened_cut/sigma.20``.
+         j. Go the convergence/Screened_cut directory by running 
+            ``cd convergence/Screened_cut``.
+         k. Run the command ``python sigma_convergence.py``. This will generate
+            a plot showing the errors in many different QP gaps for the three different
+            values of the screened cutoff. If you do not see the plot, a png named 
+            "Screened_cut_conv.png" is generated, so you can use ``display Screened_cut_conv.png`` 
+            to view that file. If that does not work either, then use the following command to copy
+            the file to your laptop and view it there:
+            ``scp username@edison.nersc.gov:/scratch1/scratchdirs/username/2-silicon_convergence/2-bgw/2-sigma/convergence/Screened_cut/Screened_cut_conv.png`` 
+            where username should be replaced with the user name for your training account.
+            What is the maximum error for the calculation using a screened cutoff of 15 Ryd?
+
+    5. Now we will test the convergence with respect to the number of bands used 
+       in calculating the dielectric matrix. The number of bands that we will use is 60, 
+        132, and 202. These are values that are allowed by symmetry. To test the convergence
+        with respect to the number of bands in the dielectric matrix calculation do the following:
+         a. Go to the ``1-epsilon`` directory and change the number of bands to 60. Check
+            that number of bands in Sigma and the screened cutoff are set to their 
+            "infinite values". 
+         b. Run the Epsilon calculation using ``./01-run_epsilon.run``.
+         c. Go to the ``2-sigma`` directory and run the Sigma calculation using 
+            ``./01-run_sigma.run``. 
+         d. Copy the ``sigma_hp.log`` file to ``convergence/Epsilon_bands/sigma.60``, i.e. use
+            the command ``cp sigma_hp.log convergence/Epsilon_bands/sigma.60``. The number 
+            after the dot now signifies the number of bands in the epsilon calculation. 
+         e. Go to the ``1-epsilon`` directory and change the number of bands to 132.
+         f. Run the ``Epsilon`` calculation using ``./01-run_epsilon.run``.
+         g. Go to the ``2-sigma`` directory and run the Sigma calculation using 
+            ``./01-run_sigma.run``. 
+         h. Copy the ``sigma_hp.log`` file to ``convergence/Epsilon_bands/sigma.132``.
+         i. Go to the ``1-epsilon`` directory and change the number of bands to 202.
+         j. Run the Epsilon calculation using ``./01-run_epsilon.run``.
+         k. Go to the ``2-sigma`` directory and run the Sigma calculation using 
+            ``./01-run_sigma.run``. 
+         l. Copy the ``sigma_hp.log`` file to ``convergence/Epsilon_bands/sigma.202``.
+         m. Go the ``convergence/Epsilon_bands`` directory by running 
+            ``cd convergence/Epsilon_bands``.
+         n. Run the command ``python sigma_convergence.py``. This will generate 
+            a plot showing the errors in many different QP different gaps for the three
+            different numbers of bands used in the calculation of the dielectric matrix. 
+            If you do not see the plot, a png named "Epsilon_bands_conv.png" is 
+            generated, so you can use ``display Epsilon_bands_conv.png`` to view that file. 
+            If that does not work either, , then use the following command to copy
+            the file to your laptop and view it there:
+            ``scp username@edison.nersc.gov:/scratch1/scratchdirs/username/2-silicon_convergence/2-bgw/2-sigma/convergence/Epsilon_bands/Epsilon_bands_conv.png`` 
+            where username should be replaced with the user name for your training account.
+            What is the maximum error for the calculation using 132 bands in the dielectric 
+            matrix calculation?
+
+    6. Now that we have calculated all the data, inspect the convergence plots for 
+       the number of bands in the CH summation, the screened cutoff, and the number of bands
+       in the dielectric matrix calculation. These plots can be brought back up by running the 
+       ``python sigma_convergence.py`` command in the relevant directory. What value of these 
+       parameters can we use to ensure a total error of roughly 100 meV from these parameters, i.e.
+       total error excluding the error from the wavefunction cutoff and the q-grid?
+
+    7. Bonus question : did we duplicate any calculations in the above procedure? Which steps
+       could you omit and still have all of the needed data?
+
+    8. Let's check what is the maximum number of bands up to which one should check convergence
+       for our "infinite" value of the screened cutoff (=20 Ryd) by using ``gsphere.py``. Look
+       at gsphere input file ``gsphere.inp`` and understand the different variables. Run ``gsphere.py``
+       with command ``gsphere.py gsphere.inp gsphere.out`` (Note: there is no ``python`` or ``./`` before
+       ``gsphere.py`` because it is in the BGW module). Open ``gsphere.out`` and look at the 
+       value of the variable ``ng``. This a rough estimate for the upper bound on the number of 
+       bands needed in constructing dielectric matrix and in doing the CH summation. 
+
+    9. If you have extra time, try using the static remainder to speed up the convergence of the 
+       calculation with respect to bands used in the CH summation. To do this, repeat steps 2 and 
+       3 above, but when you get to step 3, add the flag ``exact_static_ch 1`` to the end of the ``sigma.inp``
+       input file before running any of the calculations. Then run the calculations as described in step 
+       3 above, but copy the ``sigma.60``, ``sigma.132``, and ``sigma.202`` files to the ``convergence/SR`` directory 
+       and then go to ``convergence/SR`` directory, run the ``python sigma_convergence.py`` command, and 
+       inspect the convergence plots as described in step 3. Is the convergence faster, as expected?
+       How much less is the error for for 60 and 132 bands in comparison to when you did not use 
+       the static remainder? Could you use a lower number of bands for the desired error when using
+       the static remainder than when you did not?
+
+    10. If you have still more time, using the values for the number of bands in the CH summation, 
+       the screened cutoff, and the number of bands in the dielectric matrix calculation for which
+       the calculation is converged (determined above), perform the convergence tests for the 
+       wavefunction cutoff, and then for the q-grid. To do this you will need to go back to the 
+       mean-field directories to calculate the wavefunctions for different cutoffs and q-grids. 
+       What are reasonable values to test for the wavefunction cutoff and the q-grid? You can 
+       use the ``convergence/WFN_cut`` and ``convergence/q-grid`` directories and the ``sigma_convergence.py``
+       scripts that are located within those directories to make your convergence plots. For the 
+       "sigma.x" files, where x is a number, it is recommended that you use x = wavefunction cutoff 
+       for the wavefunction cutoff convergence tests, and x = linear dimension of q-grid, i.e. x=2 
+       for a 2x2x2 q-grid, for the q-grid convergence tests.

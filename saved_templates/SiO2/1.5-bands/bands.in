@@ -1,0 +1,5 @@
+&BANDS
+outdir='./tmp'
+prefix='SiO2'
+filband='SiO2_dft_bandstructure.dat'
+/

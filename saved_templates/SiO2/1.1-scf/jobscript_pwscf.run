@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH --account=PHY20032
+#SBATCH --partition=development
+#SBATCH --job-name=SiO2
+#SBATCH --nodes=10
+#SBATCH --ntasks=560
+#SBATCH --time=01:30:00
+#SBATCH --mail-user=krishnaa.vadivel@yale.edu
+#SBATCH --mail-type=ALL
+
+
+module load impi
+ibrun pw.x < pwscf.in &> pwscf.out
+rm slurm*

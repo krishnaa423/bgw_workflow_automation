@@ -1,0 +1,7 @@
+
+number_val_bands 10
+number_cond_bands 22
+
+use_wfn_hdf5
+
+screening_semiconductor

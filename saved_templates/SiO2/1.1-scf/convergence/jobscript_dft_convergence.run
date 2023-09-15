@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Variables. 
+kgrids=2x2x2 3x3x3
+ecutwfns=20 40 50 60
+
+# Launch process. 
+python dft_convergence.py --kgrids ${kgrids} --ecutwfns ${ecutwfns} > dft_convergence.log

@@ -1,0 +1,21 @@
+
+diagonalization
+
+use_wfn_hdf5
+
+number_val_bands_coarse 10
+number_val_bands_fine 10
+number_cond_bands_coarse 22
+number_cond_bands_fine 22
+
+screening_semiconductor
+
+use_velocity
+
+gaussian_broadening
+energy_resolution 0.15
+
+dump_bse_hamiltonian
+
+eqp_co_corrections
+write_eigenvectors 5

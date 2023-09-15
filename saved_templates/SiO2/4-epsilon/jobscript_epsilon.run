@@ -1,0 +1,15 @@
+#!/bin/bash -l
+#SBATCH --account=PHY20032
+#SBATCH --partition=development
+#SBATCH --job-name=SiO2
+#SBATCH --nodes=20
+#SBATCH --ntasks=1120
+#SBATCH --time=01:30:00
+#SBATCH --mail-user=krishnaa.vadivel@yale.edu
+#SBATCH --mail-type=ALL
+
+
+./link_script.sh
+python copy_qgrid.py
+ibrun epsilon.cplx.x &> epsilon.out
+rm slurm*
